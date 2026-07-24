@@ -1,0 +1,25 @@
+# NetBeans project files
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+
+# Build output
+/build/
+
+# Java compiled files
+*.class
+
+# JAR files
+*.jar
+
+# Log files
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+*.swp
+*~
