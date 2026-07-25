@@ -1,15 +1,15 @@
 package bank.java;
 
 public class BankJFrame extends javax.swing.JFrame {
-    
-    private Queue queueACC = new Queue(6);
-    private Queue queueLOAN = new Queue(6);
-    private Queue queueWD = new Queue(16);
-    private int ticketACC = 0;
-    private int ticketLOAN = 0;
+    private final Queue queueAcc = new Queue(6);
+    private final Queue queueLoan = new Queue(6);
+    private final Queue queueWD = new Queue(16);
+    private int ticketAcc = 0;
+    private int ticketLoan = 0;
     private int ticketWD = 0;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BankJFrame.class.getName());
 
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BankJFrame.class.getName());
+    
     public BankJFrame() {
         initComponents();
         this.setResizable(false);
@@ -50,6 +50,9 @@ public class BankJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnShowLoan = new javax.swing.JButton();
+        btnShowAcc = new javax.swing.JButton();
+        btnShowWD = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,9 +66,11 @@ public class BankJFrame extends javax.swing.JFrame {
         LoanPanel.add(jLabel8);
 
         btnCallLoan.setText("Call Queue");
+        btnCallLoan.addActionListener(this::btnCallLoanActionPerformed);
         LoanPanel.add(btnCallLoan);
 
         btnDoneLoan.setText("Done");
+        btnDoneLoan.addActionListener(this::btnDoneLoanActionPerformed);
         LoanPanel.add(btnDoneLoan);
 
         getContentPane().add(LoanPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 120, 110));
@@ -93,9 +98,11 @@ public class BankJFrame extends javax.swing.JFrame {
         WDPanel3.add(jLabel6);
 
         btnCallWD3.setText("Call Queue");
+        btnCallWD3.addActionListener(this::btnCallWD3ActionPerformed);
         WDPanel3.add(btnCallWD3);
 
         btnDoneWD3.setText("Done");
+        btnDoneWD3.addActionListener(this::btnDoneWD3ActionPerformed);
         WDPanel3.add(btnDoneWD3);
 
         getContentPane().add(WDPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 120, 100));
@@ -107,9 +114,11 @@ public class BankJFrame extends javax.swing.JFrame {
         WDPanel2.add(jLabel5);
 
         btnCallWD2.setText("Call Queue");
+        btnCallWD2.addActionListener(this::btnCallWD2ActionPerformed);
         WDPanel2.add(btnCallWD2);
 
         btnDoneWD2.setText("Done");
+        btnDoneWD2.addActionListener(this::btnDoneWD2ActionPerformed);
         WDPanel2.add(btnDoneWD2);
 
         getContentPane().add(WDPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 100));
@@ -121,9 +130,11 @@ public class BankJFrame extends javax.swing.JFrame {
         WDPanel1.add(jLabel4);
 
         btnCallWD1.setText("Call Queue");
+        btnCallWD1.addActionListener(this::btnCallWD1ActionPerformed);
         WDPanel1.add(btnCallWD1);
 
         btnDoneWD1.setText("Done");
+        btnDoneWD1.addActionListener(this::btnDoneWD1ActionPerformed);
         WDPanel1.add(btnDoneWD1);
 
         getContentPane().add(WDPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 120, 100));
@@ -169,6 +180,18 @@ public class BankJFrame extends javax.swing.JFrame {
         jLabel3.setOpaque(true);
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 120, 30));
 
+        btnShowLoan.setText("ShowLoan");
+        btnShowLoan.addActionListener(this::btnShowLoanActionPerformed);
+        getContentPane().add(btnShowLoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
+
+        btnShowAcc.setText("ShowAcc");
+        btnShowAcc.addActionListener(this::btnShowAccActionPerformed);
+        getContentPane().add(btnShowAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, -1, -1));
+
+        btnShowWD.setText("ShowWD");
+        btnShowWD.addActionListener(this::btnShowWDActionPerformed);
+        getContentPane().add(btnShowWD, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, -1, -1));
+
         lblBackground.setBackground(new java.awt.Color(153, 255, 102));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bank_BG.jpg"))); // NOI18N
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 560));
@@ -184,22 +207,37 @@ public class BankJFrame extends javax.swing.JFrame {
         String service = dialog.getSelectedService();
         switch (service) {
             case "ACC" -> {
-                ticketACC++;
-                String ticketA = "A-" + String.format("%03d", ticketACC);
-                queueACC.enqueue(ticketA);
-                javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketA + "\nDepartment: Account");
+                if (queueAcc.isFull()) {
+                    javax.swing.JOptionPane.showMessageDialog(this,"Account queue is full!\nPlease wait...",
+                    "Queue Full", javax.swing.JOptionPane.WARNING_MESSAGE);
+                } else {
+                    ticketAcc++;
+                    String ticketA = "A-" + String.format("%03d", ticketAcc);
+                    queueAcc.enqueue(ticketA);
+                    javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketA + "\nDepartment: Account");
+                }
             }
             case "LOAN" -> {
-                ticketLOAN++;
-                String ticketL = "L-" + String.format("%03d", ticketLOAN);
-                queueLOAN.enqueue(ticketL);
-                javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketL + "\nDepartment: Loan");
+                if (queueLoan.isFull()) {
+                    javax.swing.JOptionPane.showMessageDialog(this,"Loan queue is full!\nPlease wait...",
+                    "Queue Full", javax.swing.JOptionPane.WARNING_MESSAGE);
+                } else {
+                    ticketLoan++;
+                    String ticketL = "L-" + String.format("%03d", ticketLoan);
+                    queueLoan.enqueue(ticketL);
+                    javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketL + "\nDepartment: Loan");                
+                }
             }
             case "WD" -> {
-                ticketWD++;
-                String ticketW = "W-" + String.format("%03d", ticketWD);
-                queueWD.enqueue(ticketW);
-                javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketW + "\nDepartment: Withdraw/Deposit");
+                if (queueWD.isFull()) {
+                    javax.swing.JOptionPane.showMessageDialog(this,"Withdraw/Deposit queue is full!\nPlease wait...",
+                    "Queue Full", javax.swing.JOptionPane.WARNING_MESSAGE);
+                } else {
+                    ticketWD++;
+                    String ticketW = "W-" + String.format("%03d", ticketWD);
+                    queueWD.enqueue(ticketW);
+                    javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketW + "\nDepartment: Withdraw/Deposit");
+                }
             }
             default -> {
             }
@@ -207,10 +245,12 @@ public class BankJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTakeQueueActionPerformed
 
     private void btnCallAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallAccActionPerformed
-        String ticket = queueACC.getData();
+        String ticket = queueAcc.dequeue();
         if (!ticket.isEmpty()) {
             jLabel7.setText("Account: "+ ticket);
-            System.out.println("Please,Done to end process");
+            System.out.println("Done to end this queue");
+            btnCallAcc.setEnabled(false); 
+            btnDoneAcc.setEnabled(true);
         } else {
             jLabel7.setText("Account: Empty" );
             System.out.println("Queue is empty.");
@@ -218,14 +258,105 @@ public class BankJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCallAccActionPerformed
 
     private void btnDoneAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneAccActionPerformed
-        String ticket=queueACC.dequeue();
-        if (!ticket.isEmpty()) {
-        String next = queueACC.getData();
-            if (!next.isEmpty()) {
-                jLabel7.setText("Next: " + next);
-            } else jLabel7.setText("Account: Empty");
-        } else jLabel7.setText("Account: Empty");
+        jLabel7.setText("ACCount: Empty");
+        btnCallAcc.setEnabled(true);
+        btnDoneAcc.setEnabled(false);
     }//GEN-LAST:event_btnDoneAccActionPerformed
+
+    private void btnCallLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallLoanActionPerformed
+        String ticket= queueLoan.dequeue();
+        if (!ticket.isEmpty()) {
+            jLabel8.setText("Loan: "+ ticket);
+            System.out.println("Done to end this queue");
+            btnCallLoan.setEnabled(false);
+            btnDoneLoan.setEnabled(true);
+        } else {
+            jLabel8.setText("Loan: Empty" );
+            System.out.println("Queue is empty.");
+        }
+    }//GEN-LAST:event_btnCallLoanActionPerformed
+
+    private void btnDoneLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneLoanActionPerformed
+        jLabel8.setText("Loan: Empty");
+        btnCallLoan.setEnabled(true);
+        btnDoneLoan.setEnabled(false);
+    }//GEN-LAST:event_btnDoneLoanActionPerformed
+
+    private void btnCallWD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallWD1ActionPerformed
+        String ticket=queueWD.dequeue();
+        if (!ticket.isEmpty()){
+            jLabel4.setText("WD1: " + ticket);
+            System.out.println("Done to end this queue");
+            btnCallWD1.setEnabled(false);
+            btnDoneWD1.setEnabled(true);
+        } else {
+            jLabel4.setText("WD1: Empty");
+            System.out.println("Queue is empty.");
+        }
+    }//GEN-LAST:event_btnCallWD1ActionPerformed
+
+    private void btnDoneWD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneWD1ActionPerformed
+       jLabel4.setText("WD1: Empty");
+       btnCallWD1.setEnabled(true);
+       btnDoneWD1.setEnabled(false);
+    }//GEN-LAST:event_btnDoneWD1ActionPerformed
+
+    private void btnCallWD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallWD2ActionPerformed
+        String ticket=queueWD.dequeue();
+        if (!ticket.isEmpty()) {
+            jLabel5.setText("WD2: " + ticket);
+            btnCallWD2.setEnabled(false);
+            btnDoneWD2.setEnabled(true);
+        } else {
+            jLabel5.setText("WD2: Empty");
+            System.out.println("Queue is empty.");
+        }
+    }//GEN-LAST:event_btnCallWD2ActionPerformed
+
+    private void btnDoneWD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneWD2ActionPerformed
+       jLabel5.setText("WD2: Empty");
+       btnCallWD2.setEnabled(true);
+       btnDoneWD2.setEnabled(false);
+    }//GEN-LAST:event_btnDoneWD2ActionPerformed
+
+    private void btnCallWD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallWD3ActionPerformed
+        String ticket= queueWD.dequeue();
+        if (!ticket.isEmpty()) {
+            jLabel6.setText("WD3: " + ticket);
+            btnCallWD3.setEnabled(false);
+            btnDoneWD3.setEnabled(true);
+        } else {
+            jLabel6.setText("WD3: Empty");
+            System.out.println("Queue is empty.");
+        }
+    }//GEN-LAST:event_btnCallWD3ActionPerformed
+
+    private void btnDoneWD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneWD3ActionPerformed
+       jLabel6.setText("WD3: Empty");
+       btnCallWD3.setEnabled(true);
+       btnDoneWD3.setEnabled(false);
+    }//GEN-LAST:event_btnDoneWD3ActionPerformed
+
+    private void btnShowAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAccActionPerformed
+        System.out.println("==================================");
+        System.out.print("Data in Account: ");
+        queueAcc.showArr();
+        queueAcc.showCurrent();
+    }//GEN-LAST:event_btnShowAccActionPerformed
+
+    private void btnShowLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowLoanActionPerformed
+        System.out.println("==================================");
+        System.out.print("Data in Loan: ");
+        queueLoan.showArr();
+        queueLoan.showCurrent();
+    }//GEN-LAST:event_btnShowLoanActionPerformed
+
+    private void btnShowWDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowWDActionPerformed
+        System.out.println("==================================");
+        System.out.print("Data in Withdraw/Deposit: ");
+        queueWD.showArr();
+        queueWD.showCurrent();
+    }//GEN-LAST:event_btnShowWDActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new BankJFrame().setVisible(true));
@@ -248,6 +379,9 @@ public class BankJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDoneWD1;
     private javax.swing.JButton btnDoneWD2;
     private javax.swing.JButton btnDoneWD3;
+    private javax.swing.JButton btnShowAcc;
+    private javax.swing.JButton btnShowLoan;
+    private javax.swing.JButton btnShowWD;
     private javax.swing.JButton btnTakeQueue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
