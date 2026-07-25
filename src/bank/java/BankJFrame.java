@@ -6,6 +6,7 @@ public class BankJFrame extends javax.swing.JFrame {
 
     public BankJFrame() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -16,46 +17,193 @@ public class BankJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        LoanPanel = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        btnCallLoan = new javax.swing.JButton();
+        btnDoneLoan = new javax.swing.JButton();
+        AccPanel = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btnCallAcc = new javax.swing.JButton();
+        btnDoneAcc = new javax.swing.JButton();
+        WDPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        btnCallWD3 = new javax.swing.JButton();
+        btnDoneWD3 = new javax.swing.JButton();
+        WDPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        btnCallWD2 = new javax.swing.JButton();
+        btnDoneWD2 = new javax.swing.JButton();
+        WDPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        btnCallWD1 = new javax.swing.JButton();
+        btnDoneWD1 = new javax.swing.JButton();
+        TakequeuePanel = new javax.swing.JPanel();
+        btnTakeQueue = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
-        );
+        LoanPanel.setBackground(new java.awt.Color(111, 225, 215));
+        LoanPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 51, 51), new java.awt.Color(153, 153, 153), new java.awt.Color(51, 51, 51)));
+
+        jLabel8.setText("Loan");
+        LoanPanel.add(jLabel8);
+
+        btnCallLoan.setText("Call Queue");
+        LoanPanel.add(btnCallLoan);
+
+        btnDoneLoan.setText("Done");
+        LoanPanel.add(btnDoneLoan);
+
+        getContentPane().add(LoanPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 120, 110));
+
+        AccPanel.setBackground(new java.awt.Color(237, 142, 148));
+        AccPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 51, 51), new java.awt.Color(153, 153, 153), new java.awt.Color(51, 51, 51)));
+
+        jLabel7.setText("Account");
+        AccPanel.add(jLabel7);
+
+        btnCallAcc.setText("Call Queue");
+        AccPanel.add(btnCallAcc);
+
+        btnDoneAcc.setText("Done");
+        AccPanel.add(btnDoneAcc);
+
+        getContentPane().add(AccPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 80, 120, 110));
+
+        WDPanel3.setBackground(new java.awt.Color(165, 193, 240));
+        WDPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 51, 51), new java.awt.Color(153, 153, 153), new java.awt.Color(51, 51, 51)));
+
+        jLabel6.setText("WD3");
+        WDPanel3.add(jLabel6);
+
+        btnCallWD3.setText("Call Queue");
+        WDPanel3.add(btnCallWD3);
+
+        btnDoneWD3.setText("Done");
+        WDPanel3.add(btnDoneWD3);
+
+        getContentPane().add(WDPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 120, 100));
+
+        WDPanel2.setBackground(new java.awt.Color(165, 193, 240));
+        WDPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 51, 51), new java.awt.Color(153, 153, 153), new java.awt.Color(51, 51, 51)));
+
+        jLabel5.setText("WD2");
+        WDPanel2.add(jLabel5);
+
+        btnCallWD2.setText("Call Queue");
+        WDPanel2.add(btnCallWD2);
+
+        btnDoneWD2.setText("Done");
+        WDPanel2.add(btnDoneWD2);
+
+        getContentPane().add(WDPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 100));
+
+        WDPanel1.setBackground(new java.awt.Color(165, 193, 240));
+        WDPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 51, 51), new java.awt.Color(153, 153, 153), new java.awt.Color(51, 51, 51)));
+
+        jLabel4.setText("WD1");
+        WDPanel1.add(jLabel4);
+
+        btnCallWD1.setText("Call Queue");
+        WDPanel1.add(btnCallWD1);
+
+        btnDoneWD1.setText("Done");
+        WDPanel1.add(btnDoneWD1);
+
+        getContentPane().add(WDPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 120, 100));
+
+        TakequeuePanel.setBackground(new java.awt.Color(0, 204, 0));
+        TakequeuePanel.setLayout(new java.awt.GridBagLayout());
+
+        btnTakeQueue.setText("Take a queue ticket");
+        btnTakeQueue.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnTakeQueue.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTakeQueue.addActionListener(this::btnTakeQueueActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        TakequeuePanel.add(btnTakeQueue, gridBagConstraints);
+
+        getContentPane().add(TakequeuePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 160, 50));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Loan");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 130, 30));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jLabel2.setText("Withdraw / Deposit");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel2.setOpaque(true);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 190, 30));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Account ");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel3.setOpaque(true);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 120, 30));
+
+        lblBackground.setBackground(new java.awt.Color(153, 255, 102));
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bank_BG.jpg"))); // NOI18N
+        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnTakeQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTakeQueueActionPerformed
+        QueueServiceDialog dialog = new QueueServiceDialog(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnTakeQueueActionPerformed
 
-        /* Create and display the form */
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new BankJFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AccPanel;
+    private javax.swing.JPanel LoanPanel;
+    private javax.swing.JPanel TakequeuePanel;
+    private javax.swing.JPanel WDPanel1;
+    private javax.swing.JPanel WDPanel2;
+    private javax.swing.JPanel WDPanel3;
+    private javax.swing.JButton btnCallAcc;
+    private javax.swing.JButton btnCallLoan;
+    private javax.swing.JButton btnCallWD1;
+    private javax.swing.JButton btnCallWD2;
+    private javax.swing.JButton btnCallWD3;
+    private javax.swing.JButton btnDoneAcc;
+    private javax.swing.JButton btnDoneLoan;
+    private javax.swing.JButton btnDoneWD1;
+    private javax.swing.JButton btnDoneWD2;
+    private javax.swing.JButton btnDoneWD3;
+    private javax.swing.JButton btnTakeQueue;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblBackground;
     // End of variables declaration//GEN-END:variables
 }
