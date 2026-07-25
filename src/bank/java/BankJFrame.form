@@ -100,11 +100,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Call Queue"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCallAccActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDoneAcc">
           <Properties>
             <Property name="text" type="java.lang.String" value="Done"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoneAccActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

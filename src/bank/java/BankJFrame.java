@@ -2,6 +2,12 @@ package bank.java;
 
 public class BankJFrame extends javax.swing.JFrame {
     
+    private Queue queueACC = new Queue(6);
+    private Queue queueLOAN = new Queue(6);
+    private Queue queueWD = new Queue(16);
+    private int ticketACC = 0;
+    private int ticketLOAN = 0;
+    private int ticketWD = 0;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BankJFrame.class.getName());
 
     public BankJFrame() {
@@ -71,9 +77,11 @@ public class BankJFrame extends javax.swing.JFrame {
         AccPanel.add(jLabel7);
 
         btnCallAcc.setText("Call Queue");
+        btnCallAcc.addActionListener(this::btnCallAccActionPerformed);
         AccPanel.add(btnCallAcc);
 
         btnDoneAcc.setText("Done");
+        btnDoneAcc.addActionListener(this::btnDoneAccActionPerformed);
         AccPanel.add(btnDoneAcc);
 
         getContentPane().add(AccPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 80, 120, 110));
@@ -172,8 +180,53 @@ public class BankJFrame extends javax.swing.JFrame {
         QueueServiceDialog dialog = new QueueServiceDialog(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
+        
+        String service = dialog.getSelectedService();
+        switch (service) {
+            case "ACC" -> {
+                ticketACC++;
+                String ticketA = "A-" + String.format("%03d", ticketACC);
+                queueACC.enqueue(ticketA);
+                javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketA + "\nDepartment: Account");
+            }
+            case "LOAN" -> {
+                ticketLOAN++;
+                String ticketL = "L-" + String.format("%03d", ticketLOAN);
+                queueLOAN.enqueue(ticketL);
+                javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketL + "\nDepartment: Loan");
+            }
+            case "WD" -> {
+                ticketWD++;
+                String ticketW = "W-" + String.format("%03d", ticketWD);
+                queueWD.enqueue(ticketW);
+                javax.swing.JOptionPane.showMessageDialog(this,"Queue: " + ticketW + "\nDepartment: Withdraw/Deposit");
+            }
+            default -> {
+            }
+        }
     }//GEN-LAST:event_btnTakeQueueActionPerformed
 
+    private void btnCallAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCallAccActionPerformed
+        String ticket = queueACC.getData();
+        if (!ticket.isEmpty()) {
+            jLabel7.setText("Account: "+ ticket);
+            System.out.println("Please,Done to end process");
+        } else {
+            jLabel7.setText("Account: Empty" );
+            System.out.println("Queue is empty.");
+        }
+    }//GEN-LAST:event_btnCallAccActionPerformed
+
+    private void btnDoneAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneAccActionPerformed
+        String ticket=queueACC.dequeue();
+        if (!ticket.isEmpty()) {
+        String next = queueACC.getData();
+            if (!next.isEmpty()) {
+                jLabel7.setText("Next: " + next);
+            } else jLabel7.setText("Account: Empty");
+        } else jLabel7.setText("Account: Empty");
+    }//GEN-LAST:event_btnDoneAccActionPerformed
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new BankJFrame().setVisible(true));
     }
