@@ -11,20 +11,14 @@ public class Queue {
         this.size=size;
         this.db = new Database(size);
         this.count=0;
-        this.front=-1;
+        this.front=0;
         this.rear=-1;
     }
     
     public void enqueue(String item){
         if(!isFull()){
-            if (isEmpty()) {
-                this.front=0;
-                this.rear=0;
-                db.setData(rear, item);
-            } else {
-                rear=(rear+1)%size;//(-1) satar intdex at 1 to ...
-                db.setData(rear,item);
-            }
+            rear=(rear+1)%size;
+            db.setData(rear,item);
             count++;
         } else System.out.println("Queue is full," + item + " will not collect.");
     }
@@ -32,23 +26,25 @@ public class Queue {
         String data="";
         if (!isEmpty()) {
             data=db.getData(front);
-            if (front==rear) { //force reset
-                this.front=-1;
-                this.rear=-1;
-            } else front=(front+1)%this.size;
+            front=(front+1)%size;
             count--;
         } else System.out.println("Queue is empty,You can't dequeue.");
         return data;
     }
     //check
-    public boolean isEmpty(){return front==-1 && rear==-1;}
+    public boolean isEmpty(){return count==0;}
     public boolean isFull(){return count==size;}
     //get count
-    public int getFront() {return this.front;}
-    public String getData() {
-        if (!isEmpty()) {
-            return db.getData(front);
+    public int getCount() {return this.count;}
+    public void showArr() {
+        for (int i=0;i<db.getSize();i++) {
+            System.out.print(db.getData(i)+" ");
         }
-        return "";
+        System.out.println();
+    }
+    public void showCurrent() {
+        System.out.println("CurrentFront: " + this.front);
+        System.out.println("CurrentRear: " + this.rear);
+        System.out.println("CurrentCount: " + this.count);
     }
 }

@@ -15,4 +15,5 @@ public class Database {
     public void setData(int index, String item){this.dataQueue[index]=item;}
     //get
     public String getData(int index){return dataQueue[index];} 
+    public int getSize() {return this.arrSize;}
 }

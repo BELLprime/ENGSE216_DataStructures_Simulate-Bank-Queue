@@ -93,19 +93,16 @@ public class QueueServiceDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this,"Queue A: Account Service\nPlease wait...");
         selectedService = "ACC";
         this.dispose();
     }//GEN-LAST:event_btnAccountActionPerformed
 
     private void btnLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoanActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this,"Queue L: Loan Service\nPlease wait...");
         selectedService = "LOAN";
         this.dispose();
     }//GEN-LAST:event_btnLoanActionPerformed
 
     private void btnWithdrawDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawDepositActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this,"Queue W: Withdraw/Deposit Service\nPlease wait...");
         selectedService = "WD";
         this.dispose();
     }//GEN-LAST:event_btnWithdrawDepositActionPerformed
