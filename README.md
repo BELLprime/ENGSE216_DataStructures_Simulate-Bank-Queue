@@ -1,5 +1,8 @@
 This repo is part of ENGSE216 for simulate queue_circular in a bank.
 
+## 🖥️ GUI 
+<img width="1197" height="727" alt="image" src="https://github.com/user-attachments/assets/dc540947-1a4f-4a46-bd15-d3cd3a47ab83" />
+
 ## 🛠️ Built With
 * **Language:** Java
 * **GUI Framework:** Java Swing (NetBeans GUI Builder)
